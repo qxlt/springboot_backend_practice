@@ -3,10 +3,9 @@ package ca.gbc.productmicroservice.controller;
 import ca.gbc.productmicroservice.dto.ProductRequest;
 import ca.gbc.productmicroservice.dto.ProductResponse;
 import ca.gbc.productmicroservice.service.ProductService;
+import io.micrometer.core.ipc.http.HttpSender;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +19,19 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody ProductRequest productRequest){
-        productService.createProduct(productRequest);
+    public ResponseEntity<ProductResponse> createProduct(@RequestBody ProductRequest productRequest){
+        ProductResponse createProduct = productService.createProduct(productRequest);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/api/product/" + createProduct.id());
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(createProduct);
+
+
     }
 
     @GetMapping
@@ -31,8 +41,8 @@ public class ProductController {
         return productService.getAllProduct();
     }
 
-    //http://localhost:8080/api/product/
-    @PutMapping
+    //http://localhost:8081/api/product/
+    @PutMapping("/{productId}")
     //PutMapping means updating
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
     // we can return the status in annotation or when return the response entity, add it there
@@ -49,7 +59,7 @@ public class ProductController {
         return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{productId}")
     public ResponseEntity<?> deleteProduct(@PathVariable("productId") String id){
         productService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
