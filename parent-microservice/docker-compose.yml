@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------------------------------------------------
 # create networks
-# -p give me a folder, up brings up all the containers
+# -p give me a folder, brings up all the containers
 # 1. docker-compose -p comp3095-microservices-ecommerce -f docker-compose.yml up -d
 #     -- This command will start the containers in detached made without rebuilding the images (if they exist)
 #
@@ -17,8 +17,8 @@ services:
     ports:
       - "8084:8084"
     build:
-      context: ./product-microservice
-      dockerfile: ./Dockerfile
+      context: product-microservice
+      dockerfile: ../../product-microservice/Dockerfile
     container_name: product-microservice-manual
     environment:
       SPRING_PROFILES_ACTIVE: docker
