@@ -8,7 +8,7 @@ RUN gradle build -x test
 
 FROM openjdk:22-jdk
 
-RUN mkdir /app
+RUN mkdir /app3
 
 COPY --from=builder /home/gradle/src/build/libs/*.jar /app/order-microservice.jar
 
