@@ -8,8 +8,8 @@ import java.math.BigDecimal;
 
 public record OrderRequest(
         Long id,
-        String order_number,
-        String sku_number,
+        String orderNumber,
+        String skuNumber,
         BigDecimal price,
         Integer quantity) {
 }

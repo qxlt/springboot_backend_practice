@@ -18,8 +18,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long order_id;
 
-    private String order_number;
-    private String sku_number;
+    private String orderNumber;
+    private String skuNumber;
     private BigDecimal price;
     private Integer quantity;
 

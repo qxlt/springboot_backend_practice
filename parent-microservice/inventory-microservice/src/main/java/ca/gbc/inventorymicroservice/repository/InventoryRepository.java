@@ -1,10 +1,10 @@
 package ca.gbc.inventorymicroservice.repository;
 
-import ca.gbc.inventorymicroservice.model.inventory;
+import ca.gbc.inventorymicroservice.model.Inventory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface InventoryRepository extends JpaRepository<inventory, Long> {
-    boolean existsBySkuNumberAndQuantityGreaterThanEqual(String sku_number, Integer quantity);
+public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 
-//    boolean findBySkuCode(String skuCode);
+    boolean existsBySkuNumberAndQuantityGreaterThanEqual(String skuNumber, Integer quantity);
+//    boolean existsBySkuNumberAndQuantityGreaterThanEqual(String skuNumber, Integer quantity);
 }

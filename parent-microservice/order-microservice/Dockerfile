@@ -1,4 +1,4 @@
-FROM gradle:8.10-jdk22-alpine AS builder
+FROM gradle:8.10-jdk-21-and-23-alpine AS builder
 
 COPY --chown=gradle:gradle . /home/gradle/src
 
@@ -6,15 +6,15 @@ WORKDIR /home/gradle/src
 
 RUN gradle build -x test
 
-FROM openjdk:22-jdk
+FROM openjdk:23-jdk
 
-RUN mkdir /app3
+RUN mkdir /app
 
 COPY --from=builder /home/gradle/src/build/libs/*.jar /app/order-microservice.jar
 
 ENV POSTGRES_USER=admin\
     POSTGRES_PASSWORD=password
 
-EXPOSE 8082
+EXPOSE 8084
 
 ENTRYPOINT ["java", "-jar", "/app/order-microservice.jar"]
