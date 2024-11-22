@@ -30,8 +30,6 @@ public class ProductController {
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(createProduct);
-
-
     }
 
     @GetMapping
@@ -40,6 +38,7 @@ public class ProductController {
     public List<ProductResponse> getAllProducts(){
         return productService.getAllProduct();
     }
+
 
     //http://localhost:8081/api/product/
     @PutMapping("/{productId}")

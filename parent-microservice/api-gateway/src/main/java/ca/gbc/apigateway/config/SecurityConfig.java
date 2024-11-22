@@ -16,9 +16,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     private final String[] noauthResourceUris = {
             "/swagger-ui",
-            "/swagger-ui/*",
+            "/swagger-ui/",
+            "/swagger-ui/**",
+            "/swagger-ui/index.html",
             "/v3/api-docs/**",
-            "/swagger-resource/**",
+            "/swagger-resources/**",  // Fixed typo
             "/api-docs/**",
             "/aggregate/**"
     };
