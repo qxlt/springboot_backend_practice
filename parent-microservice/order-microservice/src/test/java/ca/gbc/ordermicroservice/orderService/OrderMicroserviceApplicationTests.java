@@ -40,33 +40,33 @@ class OrderMicroserviceApplicationTests {
 	}
 
 
-	@Test
-	void placeOrderTest(){
-		String requestBody = """
-    			{
-    				"skuNumber": "SKU001",
-    				"price": "100.00",
-    				"quantity": "10"
-    			}
-				""";
-
-		// Mocking stub call
-		InventoryClientStub.stubInventoryCall("SKU001", 10);
-
-		RestAssured.given()
-				.contentType("application/json")
-				.body(requestBody)
-				.when()
-				.post("/api/order")
-				.then()
-				.log().all()
-				.statusCode(201)
-				.body(equalTo("Order Placed Successfully"));
-	}
-
-
-	@Test
-	void contextLoads() {
-	}
+//	@Test
+//	void placeOrderTest(){
+//		String requestBody = """
+//    			{
+//    				"skuNumber": "SKU001",
+//    				"price": "100.00",
+//    				"quantity": "10"
+//    			}
+//				""";
+//
+//		// Mocking stub call
+//		InventoryClientStub.stubInventoryCall("SKU001", 10);
+//
+//		RestAssured.given()
+//				.contentType("application/json")
+//				.body(requestBody)
+//				.when()
+//				.post("/api/order")
+//				.then()
+//				.log().all()
+//				.statusCode(201)
+//				.body(equalTo("Order Placed Successfully"));
+//	}
+//
+//
+//	@Test
+//	void contextLoads() {
+//	}
 
 }

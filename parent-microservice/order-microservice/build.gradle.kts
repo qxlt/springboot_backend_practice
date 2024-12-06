@@ -21,6 +21,9 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven {
+		url = uri("https://packages.confluent.io/maven/")
+	}
 }
 
 // week 10
@@ -32,6 +35,7 @@ dependencyManagement{
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j:3.2.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.flywaydb:flyway-core")
@@ -42,7 +46,7 @@ dependencies {
 	testImplementation("org.springdoc:springdoc-openapi-starter-webmvc-api:2.6.0")
 	implementation("org.springframework.cloud:spring-cloud-contract-stub-runner")
 	compileOnly("org.projectlombok:lombok")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
+//	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -53,6 +57,14 @@ dependencies {
 	testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner")
 	implementation("javax.servlet:javax.servlet-api:4.0.1")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("org.springframework.kafka:spring-kafka:3.3.0")
+	testImplementation("org.springframework.kafka:spring-kafka-test:3.3.0")
+	testImplementation("org.testcontainers:kafka:1.20.4")
+//	implementation("org.apache.avro:avro:1.12.0")
+//	implementation("io.confluent:kafka-schema-registry-client:7.7.1")
+//	implementation("io.confluent:kafka-avro-serializer:7.7.1")
+//	implementation(project(":shared-schema"))
+
 }
 
 tasks.withType<Test> {

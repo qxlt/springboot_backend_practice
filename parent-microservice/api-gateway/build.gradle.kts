@@ -29,8 +29,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security:3.3.5")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
 	testImplementation("org.springdoc:springdoc-openapi-starter-webmvc-api:2.6.0")
-
-
+	implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j:3.2.0")
+	implementation("org.springframework.boot:spring-boot-starter-actuator:3.4.0")
 }
 
 dependencyManagement {

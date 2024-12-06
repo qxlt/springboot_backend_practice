@@ -16,14 +16,14 @@ public class OpenApiConfig {
     private String version;
 
     @Bean
-    public OpenAPI productServiceAPI(){
+    public OpenAPI orderServiceAPI(){
         return new OpenAPI()
-                .info(new Info().title("Product Service API")
-                        .description("REST API for Product Service")
+                .info(new Info().title("Order Service API")
+                        .description("REST API for Order Service")
                         .version(version)
                         .license(new License().name("Apache 2.0")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("Product Service REST API - GBC 2024")
-                        .url("https://mycompany.ca/product-service/docs"));
+                        .description("Order Service REST API - GBC 2024")
+                        .url("https://mycompany.ca/order-service/docs"));
     }
 }

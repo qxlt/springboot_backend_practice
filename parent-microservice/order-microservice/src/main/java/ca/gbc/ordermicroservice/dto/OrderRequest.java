@@ -11,5 +11,14 @@ public record OrderRequest(
         String orderNumber,
         String skuNumber,
         BigDecimal price,
-        Integer quantity) {
+        Integer quantity,
+        UserDetails userDetails) {
+
+        public record UserDetails(
+                String email,
+                String firstName,
+                String lastName
+        ){}
+
 }
+

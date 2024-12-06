@@ -36,6 +36,12 @@ public class ProductController {
     @ResponseStatus(HttpStatus.OK)
     // getting information
     public List<ProductResponse> getAllProducts(){
+        try{
+            Thread.sleep(5000);
+        }catch(InterruptedException e){
+            throw new RuntimeException(e);
+        }
+
         return productService.getAllProduct();
     }
 
@@ -45,7 +51,6 @@ public class ProductController {
     //PutMapping means updating
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
     // we can return the status in annotation or when return the response entity, add it there
-
     public ResponseEntity<?> updateProduct(@RequestBody ProductRequest productRequest,
                                            @PathVariable("productId") String id){
         String updatedProductId = productService.updateProduct(productRequest, id);
